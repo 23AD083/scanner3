@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guardiana</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #90EE90;
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            background-color: #333;
+            padding: 10px;
+        }
+
+        .logo {
+            height: 70px; /* Zoomed logo */
+            width: 70px;  /* Ensure it's a circle */
+            margin-right: 20px;
+            border-radius: 55%; /* Make it circular */
+        }
+
+        .search-bar {
+            flex-grow: 1;
+            padding: 5px;
+            margin-right: 10px;
+        }
+
+        .nav-button {
+            background-color: green;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-left: 10px;
+            cursor: pointer;
+            border-radius: 5px; /* Rounded rectangle shape */
+        }
+
+        .nav-button:hover {
+            background-color: darkgreen;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 400px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .submit-button {
+            background-color: green;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px; /* Rounded rectangle shape */
+        }
+
+        .submit-button:hover {
+            background-color: darkgreen;
+        }
+
+        label, input {
+            display: block;
+            width: 100%;
+            margin: 10px 0;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById('loginBtn').onclick = function() {
+                document.getElementById('loginModal').style.display = 'block';
+            }
+
+            document.getElementById('registerBtn').onclick = function() {
+                document.getElementById('registerModal').style.display = 'block';
+            }
+
+            document.getElementById('closeLogin').onclick = function() {
+                document.getElementById('loginModal').style.display = 'none';
+            }
+
+            document.getElementById('closeRegister').onclick = function() {
+                document.getElementById('registerModal').style.display = 'none';
+            }
+
+            window.onclick = function(event) {
+                if (event.target == document.getElementById('loginModal')) {
+                    document.getElementById('loginModal').style.display = 'none';
+                }
+                if (event.target == document.getElementById('registerModal')) {
+                    document.getElementById('registerModal').style.display = 'none';
+                }
+            }
+        });
+    </script>
+</head>
+<body>
+    <nav class="navbar">
+        <img src="llogobot.png" alt="Guardiana Logo" class="logo">
+        <input type="text" placeholder="Search" class="search-bar">
+        <button class="nav-button" id="loginBtn">Login</button>
+        <button class="nav-button" id="registerBtn">Register</button>
+    </nav>
+
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeLogin">&times;</span>
+            <form>
+                <h2>Login</h2>
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <button type="submit" class="submit-button">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeRegister">&times;</span>
+            <form>
+                <h2>Register</h2>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <label for="confirm-password">Confirm Password:</label>
+                <input type="password" id="confirm-password" name="confirm-password" required>
+                <button type="submit" class="submit-button">Register</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
